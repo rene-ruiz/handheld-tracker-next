@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "handheld-tracker-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "pretty": "prettier --write src/**/*.{js,jsx,ts,tsx}"
+    "pretty": "prettier --write src/**/*.{js,ts,tsx}"
   },
   "dependencies": {
     "next": "14.2.5",
@@ -29,6 +29,9 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "src/**/*.{js,ts,tsx}": [
+      "npm run pretty",
+      "eslint --fix"
+    ]
   }
 }
