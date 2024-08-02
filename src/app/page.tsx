@@ -1,16 +1,7 @@
-import CardHandHeld, { HandHeld } from "@/components/cardHandHeld";
-import useQuery from "@/hooks/useQuery";
+import HomeContent from "@/components/homeContent";
 
 const Page = async () => {
-  const handHeldList: HandHeld[] = await useQuery();
-  return (
-    <>
-      <h1>Hello, App</h1>
-      {handHeldList.map((handheld, index) => (
-        <CardHandHeld key={index} handheldData={handheld} />
-      ))}
-    </>
-  );
+  return <HomeContent />;
 };
 
 export default Page;
