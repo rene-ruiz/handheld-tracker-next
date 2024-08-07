@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { ButtonComponent } from "./buttonComponent";
 
 export interface HandHeld {
   id: string;
@@ -6,9 +7,10 @@ export interface HandHeld {
   description: string;
   image: string;
   original_price: string;
+  obtained: boolean;
 }
 
-type CardHandHeldProps = {
+export type CardHandHeldProps = {
   handheldData: HandHeld;
 };
 
@@ -21,6 +23,7 @@ const CardHandHeld: FC<CardHandHeldProps> = ({ handheldData }) => {
           alt={handheldData.name}
           className="object-cover h-60 w-full"
         />
+        <ButtonComponent handheldData={handheldData} />
       </div>
       <div className="p-4 text-center">
         <h2 className="text-xl font-semibold text-gray-800">

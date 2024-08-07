@@ -1,5 +1,5 @@
 import CardHandHeld, { HandHeld } from "@/components/cardHandHeld";
-import useQuery from "@/hooks/useQuery";
+import { useQuery } from "@/hooks/useApiActions";
 import Title from "./titles";
 
 const HomeContent = async () => {
