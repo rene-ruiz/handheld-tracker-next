@@ -1,4 +1,4 @@
-import HomeContent from "@/components/homeContent";
+import HomeContent from "@/components/contentHome";
 
 const Page = async () => {
   return <HomeContent />;
