@@ -1,7 +1,7 @@
-import HomeContent from "@/components/contentHome";
+import ContentHome from "@/components/contentHome";
 
 const Page = async () => {
-  return <HomeContent />;
+  return <ContentHome />;
 };
 
 export default Page;

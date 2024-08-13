@@ -14,7 +14,9 @@ const Navbar = () => {
             <Link href={"/about"}>
               <button>About</button>
             </Link>
-            <button>Login</button>
+            <Link href={"/signin"}>
+              <button>Sign In</button>
+            </Link>
           </div>
         </div>
       </GlobalContainer>

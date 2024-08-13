@@ -1,9 +1,9 @@
 import CardHandHeld, { HandHeld } from "@/components/cardHandHeld";
-import { useQuery } from "@/hooks/useApiActions";
 import Title from "./titles";
 import GlobalContainer from "./globalContainer";
+import { useQuery } from "@/hooks/useQuery";
 
-const HomeContent = async () => {
+const ContentHome = async () => {
   const handHeldList: HandHeld[] = await useQuery();
   return (
     <GlobalContainer>
@@ -21,4 +21,4 @@ const HomeContent = async () => {
   );
 };
 
-export default HomeContent;
+export default ContentHome;

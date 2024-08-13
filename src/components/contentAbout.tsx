@@ -1,7 +1,7 @@
 import GlobalContainer from "./globalContainer";
 import Title from "./titles";
 
-const AboutContent = () => {
+const ContentAbout = () => {
   return (
     <GlobalContainer>
       <main className="py-12">
@@ -64,4 +64,4 @@ const AboutContent = () => {
   );
 };
 
-export default AboutContent;
+export default ContentAbout;

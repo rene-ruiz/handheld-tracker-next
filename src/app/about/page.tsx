@@ -1,9 +1,9 @@
-import AboutContent from "@/components/contentAbout";
+import ContentAbout from "@/components/contentAbout";
 import GlobalContainer from "@/components/globalContainer";
 import Title from "@/components/titles";
 
 const page = () => {
-  return <AboutContent />;
+  return <ContentAbout />;
 };
 
 export default page;
