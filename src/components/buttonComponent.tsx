@@ -1,8 +1,8 @@
 "use client";
 import { FC, useState } from "react";
 import { IconFavoriteHeart } from "./iconFavorite";
-import { modifyData } from "@/hooks/useApiActions";
 import { CardHandHeldProps, HandHeld } from "./cardHandHeld";
+import { modifyData } from "@/hooks/useQuery";
 
 export const ButtonComponent: FC<CardHandHeldProps> = ({ handheldData }) => {
   const { id, obtained } = handheldData;

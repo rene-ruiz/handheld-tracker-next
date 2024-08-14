@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "pretty": "prettier --write src/**/*.{js,ts,tsx}"
+    "pretty": "prettier --write src/**/*.{ts,tsx}"
   },
   "dependencies": {
     "next": "14.2.5",
