@@ -10,7 +10,7 @@ export const signUp = (data: object) =>
   });
 
 export const signIn = (data: object) =>
-  fetchWrapper(`signin/`, {
+  fetchWrapper(`login/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

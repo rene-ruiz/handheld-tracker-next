@@ -1,7 +1,7 @@
-import ContentSignIn from "@/components/contentSignIn";
+import ContentOnboarding from "@/components/contentOnboarding";
 
 const page = () => {
-  return <ContentSignIn />;
+  return <ContentOnboarding />;
 };
 
 export default page;
