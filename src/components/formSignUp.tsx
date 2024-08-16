@@ -1,19 +1,41 @@
 "use client";
 import { FC, useState } from "react";
-import { signUp } from "@/services/authService";
+import { useRouter } from "next/navigation";
+import { signIn, signUp } from "@/services/authService";
 import { OnboardingProp, OnboardingViews } from "@/types/OnboardingViews";
 
 const FormSignUp: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSignUp = () => {
-    signUp({
-      username: username,
-      email: email,
-      password: password,
-    }).then(() => {});
+  const [message, setMessage] = useState("");
+  const handleSignUp = async () => {
+    try {
+      const signUpResponse = await signUp({ username, email, password });
+
+      if (!signUpResponse.success) {
+        setMessage("Error: Please verify your input");
+        return;
+      }
+
+      setMessage("Success: Redirecting to home page");
+
+      const signInResponse = await signIn({ username, password });
+
+      if (signInResponse.success) {
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      } else {
+        setMessage("Error: Sign in failed");
+      }
+    } catch (error) {
+      setMessage("An unexpected error occurred. Please try again later.");
+      console.error("Sign up/sign in error:", error);
+    }
   };
+
   return (
     <div className="w-full min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
       <div className="w-full sm:max-w-md p-5 mx-auto">
@@ -45,6 +67,7 @@ const FormSignUp: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
             className="py-2 px-3 border border-gray-300 focus:border-gray-500 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
           />
         </div>
+        <label className="block text-gray-600">{message}</label>
         <div className="mt-6">
           <button
             onClick={() => handleSignUp()}
@@ -54,12 +77,13 @@ const FormSignUp: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
           </button>
         </div>
         <div className="mt-6 text-center">
-          <button
+          Already have an account?{" "}
+          <span
             onClick={() => setOnboardingViewHandler(OnboardingViews.SIGN_IN)}
             className="underline"
           >
-            Return for sign in
-          </button>
+            Sign in
+          </span>
         </div>
       </div>
     </div>

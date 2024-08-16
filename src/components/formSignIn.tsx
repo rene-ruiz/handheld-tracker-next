@@ -2,13 +2,32 @@
 import { FC, useState } from "react";
 import { signIn } from "@/services/authService";
 import { OnboardingProp, OnboardingViews } from "@/types/OnboardingViews";
+import { useRouter } from "next/navigation";
 
 const FormSignIn: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const handleSignIn = () => {
-    signIn({ username: username, password: password }).then(() => {});
+  const [message, setMessage] = useState("");
+
+  const handleSignIn = async () => {
+    try {
+      const signInResponse = await signIn({ username, password });
+
+      if (signInResponse.success) {
+        setMessage("Success: Redirecting to home page");
+        setTimeout(() => {
+          router.push("/");
+        }, 1000);
+      } else {
+        setMessage("Error: Sign in failed");
+      }
+    } catch (error) {
+      setMessage("An unexpected error occurred. Please try again later.");
+      console.error("Sign in error:", error);
+    }
   };
+
   return (
     <div className="w-full min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
       <div className="w-full sm:max-w-md p-5 mx-auto">
@@ -35,6 +54,7 @@ const FormSignIn: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
             className="py-2 px-3 border border-gray-300 focus:border-gray-500 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
           />
         </div>
+        <label className="block text-gray-600">{message}</label>
         <div className="mt-6">
           <button
             onClick={() => handleSignIn()}
