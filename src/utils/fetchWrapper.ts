@@ -3,7 +3,6 @@ const DOMAIN_URL = "http://127.0.0.1:8000/api/";
 const fetchWrapper = async (endpoint: string, options: RequestInit = {}) => {
   try {
     const res = await fetch(`${DOMAIN_URL}${endpoint}`, options);
-
     if (res.status === 201) {
       return {
         success: true,

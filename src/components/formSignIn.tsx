@@ -1,21 +1,24 @@
-"use client";
 import { FC, useState } from "react";
 import { signIn } from "@/services/authService";
 import { OnboardingProp, OnboardingViews } from "@/types/OnboardingViews";
 import { useRouter } from "next/navigation";
+import { loggedIn } from "@/utils/authHelper";
+import { useAuth } from "../context/authContext";
 
 const FormSignIn: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
   const router = useRouter();
+  const { login } = useAuth();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-
+  loggedIn();
   const handleSignIn = async () => {
     try {
       const signInResponse = await signIn({ username, password });
 
       if (signInResponse.success) {
         setMessage("Success: Redirecting to home page");
+        login();
         setTimeout(() => {
           router.push("/");
         }, 1000);

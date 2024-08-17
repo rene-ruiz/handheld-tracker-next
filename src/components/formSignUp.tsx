@@ -1,4 +1,3 @@
-"use client";
 import { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn, signUp } from "@/services/authService";

@@ -1,8 +1,8 @@
 "use client";
 import { FC, useState } from "react";
 import { IconFavoriteHeart } from "./iconFavorite";
-import { CardHandHeldProps, HandHeld } from "./cardHandHeld";
-import { modifyData } from "@/hooks/useQuery";
+import { modifyConsoleItem } from "@/services/consoleItemsService";
+import { CardHandHeldProps, HandHeld } from "@/types/handheld";
 
 export const ButtonComponent: FC<CardHandHeldProps> = ({ handheldData }) => {
   const { id, obtained } = handheldData;
@@ -10,8 +10,8 @@ export const ButtonComponent: FC<CardHandHeldProps> = ({ handheldData }) => {
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleFavorite = () => {
-    modifyData(id, { obtained: !obtainedFavorite }).then((res: HandHeld) => {
-      setObtained(res.obtained);
+    modifyConsoleItem(id, { obtained: !obtainedFavorite }).then((res) => {
+      setObtained(res.data?.obtained);
     });
     setIsAnimating(true);
     setTimeout(() => {
