@@ -23,19 +23,21 @@ export const signIn = async (data: object) => {
   return response;
 };
 
-export const userInfo = () => fetchWrapper(`userinfo/`);
-
 export const signOut = (data: object) => {
-  fetchWrapper(`logout/`, {
+  const token = getToken();
+  const response = fetchWrapper(`logout/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${getToken()}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
   });
   localStorage.clear();
+  return response;
 };
+
+export const userInfo = () => fetchWrapper(`userinfo/`);
 
 export const tokenRefresh = (data: object) =>
   fetchWrapper(`token/refresh`, {

@@ -4,7 +4,7 @@ export interface HandHeld {
   description: string;
   image: string;
   original_price: string;
-  obtained?: boolean;
+  is_favorite: boolean;
 }
 
 export type CardHandHeldProps = {

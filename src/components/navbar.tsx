@@ -8,10 +8,11 @@ import { useRouter } from "next/navigation";
 const Navbar = () => {
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
-  const logoutHandler = async () => {
-    signOut({ refresh_token: getRefresh() });
-    logout();
-    router.push("/");
+  const logoutHandler = () => {
+    signOut({ refresh_token: getRefresh() }).then(() => {
+      logout();
+      router.push("/");
+    });
   };
   return (
     <nav className="w-full bg-white border border-b-black">
