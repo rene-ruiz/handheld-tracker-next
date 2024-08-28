@@ -36,26 +36,30 @@ const FormSignIn: FC<OnboardingProp> = ({ setOnboardingViewHandler }) => {
       <div className="w-full sm:max-w-md p-5 mx-auto">
         <h2 className="mb-12 text-center text-5xl font-extrabold">Sign In</h2>
         <div className="mb-4">
-          <label className="block mb-1">User name</label>
-          <input
-            value={username}
-            onChange={(element) => {
-              setUsername(element.target.value);
-            }}
-            type="text"
-            className="py-2 px-3 border border-gray-300 focus:border-gray-500 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
-          />
+          <label className="block mb-1">
+            User name{" "}
+            <input
+              value={username}
+              onChange={(element) => {
+                setUsername(element.target.value);
+              }}
+              type="text"
+              className="py-2 px-3 border border-gray-300 focus:border-gray-500 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
+            />
+          </label>
         </div>
         <div className="mb-4">
-          <label className="block mb-1">Password</label>
-          <input
-            value={password}
-            onChange={(element) => {
-              setPassword(element.target.value);
-            }}
-            type="password"
-            className="py-2 px-3 border border-gray-300 focus:border-gray-500 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
-          />
+          <label className="block mb-1">
+            Password{" "}
+            <input
+              value={password}
+              onChange={(element) => {
+                setPassword(element.target.value);
+              }}
+              type="password"
+              className="py-2 px-3 border border-gray-300 focus:border-gray-500 focus:outline-none focus:ring focus:ring-gray-400 focus:ring-opacity-50 rounded-md shadow-sm disabled:bg-gray-100 mt-1 block w-full"
+            />
+          </label>
         </div>
         <label className="block text-gray-600">{message}</label>
         <div className="mt-6">

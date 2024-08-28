@@ -15,7 +15,7 @@ const Navbar = () => {
     });
   };
   return (
-    <nav className="w-full bg-white border border-b-black">
+    <nav className="w-full bg-white border border-b-gray-400">
       <GlobalContainer>
         <div className="flex justify-between h-16 items-center ">
           <Link href={"/"}>
